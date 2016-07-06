@@ -1,0 +1,32 @@
+<div class="container">
+<div class="jumbotron">
+<%= form_for(@link) do |f| %>
+  <% if @link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
+
+      <ul>
+      <% @link.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <%= f.label :link %><br>
+  </div>
+  <div class="row">
+    <%= f.text_field :link,class:" form-control" %></div>
+    <div class="row">
+
+      <%= f.label :url %><br>
+    </div><div  class="row "><%= f.text_field :url ,class:"form-control"%></class>
+  </div>
+  <br>
+  <div class="row">
+    <%= f.submit  class:"btn btn-primary" %>
+  </div>
+<% end %>
+</div>
+</div>

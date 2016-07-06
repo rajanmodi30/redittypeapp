@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="jumbotron text-center">
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Links</h1>
+<hr>
+
+    <% @links.each do |link| %>
+
+      <div class="row">
+
+      <h3>  Link:<%= link.link %></h3></div>
+        <div class="row">
+        <h3>Url:<%= link.url %><h3></div>
+
+        <div class="row">
+        <div class="btn btn-group">
+
+        <%= link_to 'Show', link ,class: "btn btn-success" %>
+
+        <% if link.user == current_user  %>
+        <%= link_to 'Edit', edit_link_path(link) ,class: "btn btn-warning"%>
+        <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="btn btn-group">
+        <%= link_to like_link_path(link),method: :put ,class: "btn btn-primary" do%>
+        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+
+        Likes<%= link.get_upvotes.size %>
+        <%  end %>
+        <%= link_to dislike_link_path(link) ,method: :put ,class:"btn btn-danger" do%>
+        <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+        Dislike<%= link.get_downvotes.size %>
+
+        <% end %>
+      </div>
+</div>
+    <hr>
+    <% end %>
+<br></div>
+</div>
+<%= link_to 'New Link', new_link_path %>
+</div>
+</div>
